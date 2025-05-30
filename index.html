@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA City Business Tax Estimator</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "fuse.js": "https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.esm.js"
+            }
+        }
+    </script>
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <div class="toggle-track">
+                <div class="toggle-thumb">
+                    <span class="theme-icon">🌙</span>
+                </div>
+            </div>
+        </button>
+        <canvas id="spark-canvas" class="spark-canvas"></canvas>
+    </div>
+    
+    <div class="container">
+        <h1>LA City Compliance & Cash-Flow Console</h1>
+
+        <div id="compliance-console">
+            <h2>Compliance Console</h2>
+            <div class="module-section">
+                <h3>Quarterly Filing Countdown</h3>
+                <div id="countdown-display">
+                    <p>Next City Deadline: <span id="city-deadline">Calculating...</span> (<span id="city-countdown">-</span> days)</p>
+                    <p>Next CDTFA Deadline: <span id="cdtfa-deadline">Calculating...</span> (<span id="cdtfa-countdown">-</span> days)</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="revenue-streams">
+            <h2>Business Revenue Streams</h2>
+            <!-- Initial stream -->
+            <div class="revenue-stream" data-index="0">
+                <label for="naics-search-0">NAICS Code / Business Type:</label>
+                <input type="text" id="naics-search-0" class="naics-search-input" placeholder="Search NAICS code or description" data-index="0">
+                <input type="hidden" id="naics-code-0" class="naics-code" data-index="0">
+                <div class="naics-results" id="naics-results-0" data-index="0"></div>
+                <span class="rate-display" id="rate-0"></span>
+
+                <label for="revenue-0">Annual Gross Receipts ($):</label>
+                <input type="number" id="revenue-0" class="annual-revenue" data-index="0" value="0" min="0">
+                <button type="button" class="remove-stream" data-index="0">Remove</button>
+            </div>
+        </div>
+
+        <button id="add-stream">Add Another Revenue Stream</button>
+
+         <div class="results">
+            <h2>Estimated Tax Liability</h2>
+            <p>Annual Total: <span id="annual-tax">$0.00</span></p>
+            <p>Quarterly Estimate: <span id="quarterly-tax">$0.00</span></p>
+        </div>
+
+        <div id="cash-flow-optimizer" class="module-section">
+             <h3>Pre-payment Cash-Flow Optimizer</h3>
+             <p>Suggested Monthly Escrow: <span id="monthly-escrow">$0.00</span></p>
+             <p class="disclaimer">This is a simplified suggestion for smoothing cash flow.</p>
+        </div>
+
+        <div class="disclaimer">
+           <p>* This is an estimate based on simplified and simulated data. Consult the official LA Office of Finance and California Department of Tax and Fee Administration (CDTFA) for accurate figures and deadlines.</p>
+        </div>
+
+    </div>
+</body>
+</html>
